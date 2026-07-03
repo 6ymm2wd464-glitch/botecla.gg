@@ -32,9 +32,9 @@ p, h1, h2, h3 {
 }
 button {
     border-radius: 10px;
-    color: white;
+    color: green;
 }
 button:hover {
-    background-color: #222;
      box-shadow: 0 10px 25px rgba(88,101,242,0.6);
+    transform: scale(1.05);
 }
