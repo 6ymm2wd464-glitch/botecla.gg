@@ -44,8 +44,7 @@ button {
 
     
 button:hover {
-     box-shadow: 0 10px 25px rgba(88,101,242,0.6);
-    transform: scale(1.05);
+     animation: matrixDecode;
 }
 .btns {
     display: inline-block;
