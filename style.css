@@ -1,70 +1,381 @@
-html, body {
+:root {
+    --bg-main: #0a0b10;
+    --bg-card: #12141d;
+    --bg-card-hover: #1a1d2a;
+    --discord-blue: #5865F2;
+    --discord-dark: #404EED;
+    --green-emerald: #10b981;
+    --green-dark: #047857;
+    --android-green: #3DDC84;
+    --warning-orange: #f59e0b;
+    --text-primary: #ffffff;
+    --text-secondary: #94a3b8;
+    --border-color: #26293b;
+    --radius: 16px;
+    --shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+}
+
+* {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    width: 100%;
-    height: 100%;
+}
 
-    background: linear-gradient(135deg, #000000, #2b2b2b) !important;
-    color: #5865F2;
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: var(--bg-main);
+    background-image: 
+        radial-gradient(circle at 15% 15%, rgba(88, 101, 242, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 85% 85%, rgba(16, 185, 129, 0.1) 0%, transparent 40%);
+    background-attachment: fixed;
+    color: var(--text-primary);
+    line-height: 1.6;
+    padding-bottom: 60px;
 }
-p, h1, h2, h3 {
-    color: white;
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background: rgba(18, 20, 29, 0.8);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
-.btn {
-    display: inline-block;
-    padding: 14px 28px;
-    background: linear-gradient(135deg, #5865F2, #404EED);
-    color: white;
+
+.logo {
+    font-size: 1.4rem;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.navbar nav {
+    display: flex;
+    gap: 24px;
+}
+
+.navbar nav a {
+    color: var(--text-secondary);
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
+}
+
+.navbar nav a:hover {
+    color: var(--text-primary);
+}
+
+.container {
+    max-width: 900px;
+    margin: 40px auto 0;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.status-banner {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(245, 158, 11, 0.1);
+    border: 1px solid rgba(245, 158, 11, 0.3);
+    color: var(--warning-orange);
+    padding: 10px 18px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.status-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.status-dot.warning {
+    background-color: var(--warning-orange);
+    box-shadow: 0 0 10px var(--warning-orange);
+}
+
+.card, .hero-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    padding: 36px;
+    box-shadow: var(--shadow);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.card:hover, .hero-card:hover {
+    border-color: rgba(88, 101, 242, 0.4);
+}
+
+.card-badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(88, 101, 242, 0.15);
+    color: var(--discord-blue);
+    font-size: 0.75rem;
+    font-weight: 800;
+    padding: 6px 12px;
+    border-radius: 20px;
+    letter-spacing: 1px;
+}
+
+.android-badge {
+    background: rgba(61, 220, 132, 0.15);
+    color: var(--android-green);
+}
+
+.highlight-card {
+    background: linear-gradient(135deg, rgba(88, 101, 242, 0.1), rgba(18, 20, 29, 0.9));
+    border-left: 4px solid var(--discord-blue);
+}
+
+h1 {
+    font-size: 2.4rem;
+    font-weight: 800;
+    margin-bottom: 16px;
+    background: linear-gradient(90deg, #fff, var(--text-secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+h2 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 14px;
+    color: #fff;
+}
+
+h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 14px 0 8px;
+    color: #e2e8f0;
+}
+
+h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 12px 0 6px;
+    color: var(--discord-blue);
+}
+
+p, .description {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 16px;
+}
+
+.button-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 24px;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 14px 28px;
+    font-size: 0.95rem;
+    font-weight: 700;
     border-radius: 12px;
-    transition: all 0.3s ease;
-    box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+}
+
+.btn-discord {
+    background: linear-gradient(135deg, var(--discord-blue), var(--discord-dark));
+    color: #ffffff;
+}
+
+.btn-support {
+    background: linear-gradient(135deg, #059669, var(--green-dark));
+    color: #ffffff;
+}
+
+.btn-apk {
+    background-color: #1e2330;
+    color: #ffffff;
+    border: 1px solid var(--border-color);
+}
+
+.btn-apk .icon {
+    font-size: 1.2rem;
+}
+
+.btn-submit {
+    background: var(--discord-blue);
+    color: #fff;
+    width: 100%;
+    margin-top: 10px;
 }
 
 .btn:hover {
-    transform: scale(1.05);
-    box-shadow: 0 10px 25px rgba(88,101,242,0.6);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(88, 101, 242, 0.4);
+    filter: brightness(1.1);
 }
 
 .btn:active {
-    transform: scale(0.98);
-}
-button {
-    display: inline-block;
-    padding: 14px 28px;
-    background: red;
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 12px;
-    transition: all 0.3s ease;
-    box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+    transform: translateY(0);
 }
 
-    
-button:hover {
-    transform: scale(1.05);
-    box-shadow: 0 10px 25px rgba(88,101,242,0.6);
-}
-.btns {
-    display: inline-block;
-    padding: 14px 28px;
-    background: linear-gradient(135deg, #0a2f1d, #14532d);
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 12px;
-    transition: all 0.3s ease;
-    box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+.feedback-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 30px;
 }
 
-.btns:hover {
-    transform: scale(1.05);
-    box-shadow: 0 10px 25px rgba(88,101,242,0.6);
+.feedback-form label {
+    font-weight: 600;
+    color: var(--text-secondary);
 }
+
 textarea {
+    width: 100%;
+    min-height: 110px;
+    padding: 14px;
+    background-color: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--border-color);
     border-radius: 12px;
-    background-color: #f9f9f9;
+    color: #fff;
+    font-family: inherit;
+    font-size: 0.95rem;
+    resize: vertical;
+    outline: none;
+    transition: border-color 0.3s ease;
 }
+
+textarea:focus {
+    border-color: var(--discord-blue);
+}
+
+.reviews-title {
+    margin-top: 20px;
+    border-top: 1px solid var(--border-color);
+    padding-top: 20px;
+}
+
+.reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+    margin-top: 14px;
+}
+
+.review-box {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border-color);
+    padding: 18px;
+    border-radius: 12px;
+}
+
+.review-user {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--discord-blue);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+}
+
+.review-box p {
+    font-size: 0.9rem;
+    margin: 0;
+    font-style: italic;
+}
+
+.legal-details {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    margin-top: 12px;
+    overflow: hidden;
+}
+
+.legal-details summary {
+    padding: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.2s ease;
+}
+
+.legal-details summary:hover {
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.details-content {
+    padding: 20px;
+    border-top: 1px solid var(--border-color);
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.details-content a {
+    color: var(--discord-blue);
+}
+
+.inner-divider {
+    border: none;
+    border-top: 1px dashed var(--border-color);
+    margin: 20px 0;
+}
+
+footer {
+    text-align: center;
+    margin-top: 50px;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+}
+
+@media (max-width: 640px) {
+    .navbar {
+        flex-direction: column;
+        gap: 12px;
+        padding: 16px 20px;
+    }
     
+    .navbar nav {
+        gap: 12px;
+        font-size: 0.85rem;
+    }
+
+    .card, .hero-card {
+        padding: 24px;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    .button-group {
+        flex-direction: column;
+    }
+    
+    .btn {
+        width: 100%;
+    }
+}
