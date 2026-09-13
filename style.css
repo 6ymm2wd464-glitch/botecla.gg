@@ -87,7 +87,7 @@ body {
     gap: 10px;
     background: rgba(245, 158, 11, 0.1);
     border: 1px solid rgba(245, 158, 11, 0.3);
-    color: var(--warning-orange);
+    color: var(--warning-yellow);
     padding: 10px 18px;
     border-radius: 50px;
     font-size: 0.85rem;
